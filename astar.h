@@ -9,7 +9,7 @@ class AStar
 public:
     AStar() {}
     SearchResult findPath(Input input);
-    std::list<Node> reconstructPath(Node current);
+    std::pair<std::list<Node>,int> reconstructPath(Node current);
 
     double getHValue(Node current, Node goal, bool dma); //dma - diagonal moves allowed
 };

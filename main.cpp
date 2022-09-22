@@ -7,18 +7,19 @@ int main(int argc, const char *argv[])
 {
     Dijkstra planner;
     bool diagonal_moves_allowed = false;
+    //int w1=1, w2=0;
     //AStar planner;
-    std::string input_name = "C:\\Users\\EVGENY\\Desktop\\lb1\\Data\\7.map";
+    std::string input_name = "C:\\Users\\EVGENY\\Desktop\\lb1\\Data\\3.map";
     if(argc > 1)
         input_name = argv[1];
     Input input(input_name, diagonal_moves_allowed);
-    SearchResult result = planner.findPath(input);
+    SearchResult result = planner.findPath (input);
     if(result.pathfound)
     {
         for(auto it = result.path.begin(); it != --result.path.end(); it++)
             std::cout<<"("<<it->x<<","<<it->y<<")->";
         std::cout<<"("<<(--result.path.end())->x<<","<<(--result.path.end())->y<<")";
-    }
+    } 
     else
         std::cout<<"PATH NOT FOUND!";
 

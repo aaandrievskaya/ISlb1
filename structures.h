@@ -6,7 +6,7 @@
 
 struct Node//вершины
 {
-    Node(int x_=-1, int y_=-1, double g_=-1, Node* parent_ = nullptr):x(x_), y(y_), g(g_), parent(parent_) {}
+    Node(int x_=-1, int y_=-1, double g_=0, Node* parent_ = nullptr):x(x_), y(y_), g(g_), parent(parent_) {}
     int x, y;
     double g;
     double f;
@@ -43,14 +43,14 @@ public:
         bool posFound = false;
         for (auto iter = elements.begin(); iter != elements.end(); ++iter)
         {
-            if (!posFound && iter->f >= node.f)
+            if (!posFound && iter->f + iter->g >= node.f + node.g)
             {
                 pos = iter;
                 posFound = true;
             }
             if (iter->x == node.x && iter->y == node.y)
             {
-                if (node.f >= iter->f)
+                if (node.f + node.g >= iter->f + iter->g)
                     return;
                 else
                 {

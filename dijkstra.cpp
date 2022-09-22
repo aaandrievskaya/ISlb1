@@ -14,7 +14,7 @@ SearchResult Dijkstra::findPath(Input input)
         auto tol = input.map.getValidMoves(current); // получить список доступных вершин для текущей
         for (auto b: tol) {  //перебираем всех соседей для текущей вершины
             if (!closed.inClose(b.x, b.y)) {  //если вершина ещё не обработана
-                b.f = input.map.getCost(current, b) + current.f;  // ??  обновляем крутость данного соседа 
+                b.f = input.map.getCost(current, b) + current.f;  // вычисляем крутость данного соседа 
                 b.parent = closed.getPointer(current.x, current.y); // забираем указатель на родителя
                 open.addNode(b);  // в список на обработку добавляется текущий сосед
             }
@@ -35,7 +35,7 @@ SearchResult Dijkstra::findPath(Input input)
     return result;
 }
 
-std::pair<std::list<Node>, int> Dijkstra::reconstructPath(Node current)
+std::pair<std::list<Node>, int> Dijkstra::reconstructPath(Node current) //восстановление пути, подсчет числа шагов
 {
     std::list<Node> path;  //создаем список нодов для хранения пути
     int stepsCount = 0;
